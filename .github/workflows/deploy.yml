@@ -1,0 +1,22 @@
+name: Deploy
+
+on: push
+
+jobs:
+  run:
+    environment:
+      name: live
+      url: ${{ steps.deployment.outputs.details_url }}
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: deployment
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCAPEVILLE_9A3A5 }}'
+          projectId: scapeville-9a3a5
