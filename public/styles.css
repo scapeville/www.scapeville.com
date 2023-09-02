@@ -3,8 +3,15 @@ body {
     text-align: center;
     background-color: #333;
     color: white;
-    margin: 0;
+    margin: 0 21vw;
     padding: 0;
+}
+
+p.info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #888;
 }
 
 h1 {
@@ -17,10 +24,13 @@ ul {
 }
 
 li {
-    margin: 10px 0;
+    margin: 9px 0;
     background-color: #444;
-    padding: 5px 10px;
+    padding: 7px 11px;
     border-radius: 5px;
+}
+li:hover {
+    background-color: #555;
 }
 
 a {

@@ -7,7 +7,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F6BK4BQN1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-7F6BK4BQN1');
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <p class="info">Website under construction.</p>
     <h1>Projects</h1>
     <ul id="repo-list"></ul>
     <script>
@@ -31,13 +32,28 @@
             .then(response => response.json())
             .then(data => {
                 const repoList = document.getElementById("repo-list");
-                data.forEach(repo => {
+
+                // Repositories to exclude
+                const excludedRepoNames = [
+                    '.github',
+                    'test-fork-Line-O-Saurus',
+                    'docs.scapeville.com',
+                    'api.scapeville.com',
+                    'www.scapeville.com',
+                ];
+
+                // Filter out repositories with excluded names
+                const filteredData = data.filter(repo => !excludedRepoNames.includes(repo.name));
+
+                filteredData.forEach(repo => {
                     const listItem = document.createElement("li");
                     listItem.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
                     repoList.appendChild(listItem);
                 });
             })
             .catch(error => console.error(error));
+
     </script>
 </body>
+
 </html>
